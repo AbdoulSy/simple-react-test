@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "jest": "^27.0.4",
+    "react-testing-library": "^8.0.1"
+  }
+}
