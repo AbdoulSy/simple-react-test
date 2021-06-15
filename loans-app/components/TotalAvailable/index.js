@@ -1,9 +1,10 @@
 export default function TotalAvailable({
     totalAvailable,
+    symbol,
     label
 }) {
-    return <div>
+    return <div className="flex flex-column">
         <p role="heading">{label}</p>:
-        <p role="contentinfo">{totalAvailable}</p>
+        <p role="contentinfo" className="font-bold">{symbol}{totalAvailable}</p>
     </div>
 }
