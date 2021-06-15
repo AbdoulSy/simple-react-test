@@ -22,7 +22,7 @@ describe("Given <InvestmentForm />", () => {
 
         describe("When rendered by a User", () => {
             beforeEach(async () => {
-                render(<InvestmentForm loadData={_LoanData} totalAvailable={_TotalInvestmentAvailable} />)
+                render(<InvestmentForm loanData={_LoanData} totalAvailable={_TotalInvestmentAvailable} />)
               
                 await waitFor(() => screen.getByRole('form'))
             })

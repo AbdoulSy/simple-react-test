@@ -1,10 +1,14 @@
-export default function Modal({children, setOpenState}) {
+export default function Modal({children, isOpen, setOpenState}) {
     return <div>
-        <div role="contentinfo">
-            {children}
-        </div>
-        <button onClick={() => setOpenState(false)}>
-            close
-        </button>
+        {
+            isOpen && <div>
+                <div role="contentinfo">
+                    {children}
+                </div>
+                <button onClick={() => setOpenState(false)}>
+                    close
+                </button>
+            </div>
+        }
     </div>
 }
