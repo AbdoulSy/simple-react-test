@@ -22,7 +22,7 @@ describe("Given <InvestmentForm />", () => {
 
         describe("When rendered by a User", () => {
             beforeEach(async () => {
-                render(<InvestmentForm loanData={_LoanData} totalAvailable={_TotalInvestmentAvailable} />)
+                render(<InvestmentForm selectedLoan={_LoanData} setSelectedLoan={jest.fn()} totalAvailable={_TotalInvestmentAvailable} />)
               
                 await waitFor(() => screen.getByRole('form'))
             })
