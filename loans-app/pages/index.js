@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { useState, useEffect } from 'react'
-import Modal from '../components/Modal'
 import InvestmentForm from '../components/InvestmentForm'
 import TotalAvailable from '../components/TotalAvailable'
 import CurrentLoanList from '../components/CurrentLoanList'
@@ -17,6 +16,8 @@ export async function getServerSideProps() {
 
 export default function Home({loanData}) {
   const [selectedLoan, setSelectedLoan] = useState({})
+  //would synchronise with a server for data integrity
+  const [userInvestmentMap, setUserInvestmentMap] = useState({})
   const [totalInvestmentAvailable, setTotalInvestmentAvailable] = useState(0.0) 
 
   return (
@@ -26,14 +27,20 @@ export default function Home({loanData}) {
         <meta name="description" content="LendInvest test" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Modal>
-        <InvestmentForm selectedLoan={selectedLoan} setTotalInvestmentAvailable={setTotalInvestmentAvailable} />
-      </Modal>
       <div>
+        <InvestmentForm 
+          selectedLoan={selectedLoan}
+          setSelectedLoan={setSelectedLoan}
+          setTotalInvestmentAvailable={setTotalInvestmentAvailable} />
+
         <main className={""}>
           <h1>Current Loans</h1>
-          <CurrentLoanList loanList={loanData} setSelectedLoan={setSelectedLoan} />
-          <TotalAvailable totalInvestmentAvailable={totalInvestmentAvailable}  />
+          <CurrentLoanList
+            loanData={loanData}
+            setSelectedLoan={setSelectedLoan} />
+          <TotalAvailable
+            totalAvailable={totalInvestmentAvailable}
+            label="Total available for investments"  />
         </main>
 
         <footer className={""}>

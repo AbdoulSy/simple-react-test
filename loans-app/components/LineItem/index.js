@@ -7,6 +7,9 @@ export default function LineItem ({ item }) {
                 {item.title}
             </h6>
         </div>
-        <Button label="INVEST" />
+        <div>
+            {item.userInvested && <p>Invested</p>}
+            <Button label="INVEST" />
+        </div>
     </li>
 }
