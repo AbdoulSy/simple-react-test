@@ -7,7 +7,11 @@ import Modal from "../Modal"
 import Input from "../Input"
 import {Button} from "../Button"
 
-export default function InvestmentForm({selectedLoan, setSelectedLoan, totalAvailable, currentUser, investInLoan}) {
+export default function InvestmentForm({selectedLoan,
+    setSelectedLoan,
+    totalAvailable,
+    currentUser,
+    investInLoan}) {
     //using useState/useEffect to prove the use case
     const [amountPendingToBeInvested, setPending] = useState("0,0")
     const setInvestedValue = (e) => {

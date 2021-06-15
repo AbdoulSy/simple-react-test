@@ -14,7 +14,7 @@ describe("Given <Modal /> and `_children`", () => {
             await waitFor(() => screen.getByText('Hello'))
           
             expect(screen.getByText('Hello')).toHaveTextContent("Hello")
-            expect(screen.getByRole('button')).toHaveTextContent("close")
+            expect(screen.getByRole('button')).toHaveTextContent("❌")
 
         })
     })
