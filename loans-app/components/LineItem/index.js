@@ -1,16 +1,7 @@
 import {Button} from "../Button"
 import moment from "moment"
 
-const canInvest = (totalAvailable, amount) => {
-    try {
-        const available = BigInt(totalAvailable)
-        const amt = BigInt(amount.replace(",", ""))
-        return available > 0n && available > amt
-    } catch (e) {
-        console.error(e)
-        return false
-    }
-}
+import canInvest from "../_utils/CanInvest"
 
 export default function LineItem ({ item, totalAvailable, onClick }) {
     return <li className="flex flex-column bg-white p-10 mb-10">

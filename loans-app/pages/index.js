@@ -7,24 +7,30 @@ import CurrentLoanList from '../components/CurrentLoanList'
 import CURRENT_LOANS_DATA from './api/current-loans.json'
 
 const VERSION = "0.0.1"
-const CURRENT_CURRENCY = { name:  "GBP", symbol: "£" }
-const TOTAL_AVAILABLE = 10000000.0 //should come from a user service
+const CURRENT_USER = {
+  name: "Abdoul Sy",
+  id: "2121",
+  CURRENT_CURRENCY : { name:  "GBP", symbol: "£" },
+  TOTAL_AVAILABLE: 10000000.0, //should come from a user service
+  email: "<dreescan+lendinvest@gmail.com>",
+  investments: []
+}
 
 export async function getServerSideProps() {
   return {
     props: {
       loanData: CURRENT_LOANS_DATA,
-      totalAvailable: TOTAL_AVAILABLE,
-      currentCurrency: CURRENT_CURRENCY
+      currentUser:  CURRENT_USER,
     }
   }
 }
 
-export default function Home({loanData, totalAvailable, currentCurrency}) {
+export default function Home({loanData, currentUser}) {
   const [selectedLoan, setSelectedLoan] = useState({})
   //would synchronise with a server for data integrity
 
-  const [totalInvestmentAvailable, setTotalInvestmentAvailable] = useState(totalAvailable) 
+  const [totalInvestmentAvailable, setTotalInvestmentAvailable] = useState(currentUser.TOTAL_AVAILABLE)
+  const investInLoan = (loan, user, amount) => { console.log("invest in loan", { loan, user, amount })}
 
   return (
     <div className={""}>
@@ -37,7 +43,9 @@ export default function Home({loanData, totalAvailable, currentCurrency}) {
         <InvestmentForm 
           selectedLoan={selectedLoan}
           setSelectedLoan={setSelectedLoan}
-          currentCurrency={currentCurrency}
+          currentUser={CURRENT_USER}
+          totalAvailable={totalInvestmentAvailable}
+          investInLoan={investInLoan}
           setTotalInvestmentAvailable={setTotalInvestmentAvailable} />
 
         <main className={""}>
@@ -48,6 +56,7 @@ export default function Home({loanData, totalAvailable, currentCurrency}) {
             setSelectedLoan={setSelectedLoan} />
           <TotalAvailable
             totalAvailable={totalInvestmentAvailable}
+            currentUser={CURRENT_USER}
             label="Total available for investments"  />
         </main>
 
