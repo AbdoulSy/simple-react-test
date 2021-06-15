@@ -1,7 +1,7 @@
 import {Button} from "../Button"
 
-export default function LineItem ({ item }) {
-    return <li className="flex flex-column">
+export default function LineItem ({ item, onClick }) {
+    return <li className="flex flex-column bg-white p-10 mb-10">
         <div className="flex-grow">
             <div className="flex flex-column">
                 <p className="bg-gray-200 text-xl rounded w-10 text-center mx-2 align-center">{item.id}</p>
@@ -22,8 +22,8 @@ export default function LineItem ({ item }) {
             <p>term remaining : <span>{item.term_remaining}</span></p>
         </div>
         <div className="w-32">
-            {item.userInvested && <p>Invested</p>}
-            <Button label="INVEST" />
+            {item.userInvested && <p className="bg-blue-100 text-green-600 font-bold">Invested</p>}
+            <Button label="INVEST" onClick={onClick} />
         </div>
     </li>
 }

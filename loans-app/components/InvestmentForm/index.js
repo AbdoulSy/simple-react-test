@@ -5,7 +5,6 @@ import {Button} from "../Button"
 
 export default function InvestmentForm({selectedLoan, setSelectedLoan, totalAvailable}) {
     //using useState/useEffect to prove the use case
-    const [autoOpen, setModalOpen] = useState(true)
     const [amountPendingToBeInvested, setPending] = useState(0)
     const [amountInvested, setAmountInvested] = useState(0)
     const setInvestedValue = (e) => {
@@ -14,7 +13,7 @@ export default function InvestmentForm({selectedLoan, setSelectedLoan, totalAvai
         setAmountInvested(val)
     }
 
-    return selectedLoan.id && <Modal isOpen={!!selectedLoan.id} setOpenState={setSelectedLoan}>
+    return selectedLoan.id ? <Modal isOpen={!!selectedLoan.id} setOpenState={setSelectedLoan}>
             <div>
                 <h3>Invest In Loan</h3>
                 <h5>{selectedLoan.title}</h5>
@@ -28,5 +27,5 @@ export default function InvestmentForm({selectedLoan, setSelectedLoan, totalAvai
                     <Button label="Invest" />
                 </form>
             </div>
-        </Modal>
+        </Modal> : null
 }
