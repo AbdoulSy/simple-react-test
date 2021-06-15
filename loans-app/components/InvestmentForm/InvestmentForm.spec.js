@@ -1,7 +1,7 @@
 describe("Given <InvestmentForm />", () => {
     describe("And `_LoanData` and `_TotalInvestmentAvailable`", () => {
         describe("When rendered by a User", () => {
-            it.todo("should show an <Input />")
+            it("should show an <Input />")
             it.todo("should show the correct `_LoanData`")
             it.todo("should show a <CloseButton />")
     
