@@ -1,5 +1,5 @@
 import Head from 'next/head'
-
+import { useState, useEffect } from 'react'
 import Modal from '../components/Modal'
 import InvestmentForm from '../components/InvestmentForm'
 import TotalAvailable from '../components/TotalAvailable'
@@ -16,6 +16,9 @@ export async function getServerSideProps() {
 }
 
 export default function Home({loanData}) {
+  const [selectedLoan, setSelectedLoan] = useState({})
+  const [totalInvestmentAvailable, setTotalInvestmentAvailable] = useState(0.0) 
+
   return (
     <div className={""}>
       <Head>
@@ -24,13 +27,13 @@ export default function Home({loanData}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Modal>
-        <InvestmentForm />
+        <InvestmentForm selectedLoan={selectedLoan} setTotalInvestmentAvailable={setTotalInvestmentAvailable} />
       </Modal>
       <div>
         <main className={""}>
           <h1>Current Loans</h1>
-          <CurrentLoanList loanList={loanData} />
-          <TotalAvailable InitialLoanData={loanData} />
+          <CurrentLoanList loanList={loanData} setSelectedLoan={setSelectedLoan} />
+          <TotalAvailable totalInvestmentAvailable={totalInvestmentAvailable}  />
         </main>
 
         <footer className={""}>

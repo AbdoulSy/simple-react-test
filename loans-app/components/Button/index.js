@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const Button = ({ label, ...props }) => {
+export const Button = ({ label, onClick }) => {
   return (
     <button
       type="button"
-      className={['storybook-button'].join(' ')}
-      {...props}
+      onClick={onClick}
+      className={['text-xl', 'bg-yellow-600', 'text-white', "w-32", "h-18"].join(' ')}
     >
       {label}
     </button>

@@ -7,25 +7,21 @@ module.exports = {
   ],
   "addons": [
     "@storybook/addon-links",
-    "@storybook/addon-essentials"
+    "@storybook/addon-essentials",
+    {
+      name: '@storybook/addon-postcss',
+      options: {
+        postcssLoaderOptions: {
+          implementation: require('postcss'),
+          postcssOptions: {
+            plugins: [require('tailwindcss'), require('autoprefixer')],
+          },
+        },
+      },
+    },
   ],
   webpackFinal: async (config) => {
-    config.module.rules.push({
-      test: /\,css&/,
-      use: [
-        {
-          loader: 'postcss-loader',
-          options: {
-            ident: 'postcss',
-            plugins: [
-              require('tailwindcss'),
-              require('autoprefixer')
-            ]
-          }
-        }
-      ],
-      include: path.resolve(__dirname, '../'),
-    })
+
     return config
-  }
+  },
 }
