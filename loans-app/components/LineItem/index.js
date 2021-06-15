@@ -1,7 +1,18 @@
 import {Button} from "../Button"
 import moment from "moment"
 
-export default function LineItem ({ item, onClick }) {
+const canInvest = (totalAvailable, amount) => {
+    try {
+        const available = BigInt(totalAvailable)
+        const amt = BigInt(amount.replace(",", ""))
+        return available > 0n && available > amt
+    } catch (e) {
+        console.error(e)
+        return false
+    }
+}
+
+export default function LineItem ({ item, totalAvailable, onClick }) {
     return <li className="flex flex-column bg-white p-10 mb-10">
         <div className="flex-grow">
             <div className="flex flex-column">
@@ -24,7 +35,7 @@ export default function LineItem ({ item, onClick }) {
         </div>
         <div className="w-32">
             {item.userInvested && <p className="bg-blue-100 text-green-600 font-bold">Invested</p>}
-            <Button label="INVEST" onClick={onClick} />
+            <Button label="INVEST" onClick={onClick} disabled={!canInvest(totalAvailable, item.amount)} />
         </div>
     </li>
 }
