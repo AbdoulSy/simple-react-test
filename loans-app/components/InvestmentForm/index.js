@@ -15,9 +15,6 @@ export default function InvestmentForm({selectedLoan, setSelectedLoan, totalAvai
         const val = e.target.value
         setPending(val)
     }
-    useEffect(() => {
-        console.log({amountPendingToBeInvested})
-    }, [amountPendingToBeInvested])
 
     return selectedLoan.id ? <Modal isOpen={!!selectedLoan.id} setOpenState={setSelectedLoan}>
             <div>
