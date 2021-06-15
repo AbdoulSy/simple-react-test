@@ -1,4 +1,5 @@
 import {Button} from "../Button"
+import moment from "moment"
 
 export default function LineItem ({ item, onClick }) {
     return <li className="flex flex-column bg-white p-10 mb-10">
@@ -19,7 +20,7 @@ export default function LineItem ({ item, onClick }) {
                 <p>Annualised Return : <span>{item.annualised_return}</span></p>
             </div>
             <hr />
-            <p>term remaining : <span>{item.term_remaining}</span></p>
+            <p>term remaining : <span>{moment().add(item.term_remaining, 's').fromNow()}</span></p>
         </div>
         <div className="w-32">
             {item.userInvested && <p className="bg-blue-100 text-green-600 font-bold">Invested</p>}
