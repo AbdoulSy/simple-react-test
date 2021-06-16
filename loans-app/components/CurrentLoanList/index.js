@@ -1,6 +1,10 @@
 import LineItem from "../LineItem";
 
-export default function CurrentLoanList({ loanData = [], setSelectedLoan, totalAvailable }) {
+export default function CurrentLoanList({ 
+    loanData,
+    setSelectedLoan,
+    totalAvailable
+}) {
     return <ul className="w-4/6 mx-auto">
         {
             loanData.length && loanData.map(item => {

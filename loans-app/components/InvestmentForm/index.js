@@ -9,11 +9,10 @@ import {Button} from "../Button"
 
 export default function InvestmentForm({selectedLoan,
     setSelectedLoan,
-    totalAvailable,
     currentUser,
     investInLoan}) {
     //using useState/useEffect to prove the use case
-    const [amountPendingToBeInvested, setPending] = useState("0,0")
+    const [amountPendingToBeInvested, setPending] = useState(0)
     const setInvestedValue = (e) => {
         e.preventDefault()
         const val = e.target.value
@@ -32,8 +31,8 @@ export default function InvestmentForm({selectedLoan,
                     </label>
                     <div className="flex flex-wrap flex-column">
                         <Input name="investValue" id="investValue" type="number" onChange={setInvestedValue} />
-                        <Button label="Invest"
-                            disabled={amountPendingToBeInvested < 100 && !canInvest(totalAvailable, amountPendingToBeInvested)}
+                        <Button label="Invest" role="button"
+                            disabled={amountPendingToBeInvested < 100}
                             onClick={() => investInLoan(selectedLoan, currentUser, amountPendingToBeInvested)}
                          />
                     </div>

@@ -25,7 +25,7 @@ export default function LineItem ({ item, totalAvailable, onClick }) {
             <p>term remaining : <span>{moment().add(item.term_remaining, 's').fromNow()}</span></p>
         </div>
         <div className="w-32">
-            {item.userInvested && <p className="bg-blue-100 text-green-600 font-bold">Invested</p>}
+            {item.userInvested && <p role="complementary" className="bg-blue-100 text-green-600 font-bold">Invested</p>}
             <Button label="INVEST" onClick={onClick} disabled={!canInvest(totalAvailable, item.amount)} />
         </div>
     </li>

@@ -34,7 +34,7 @@ export default function Home({loanData, currentUser, nonce}) {
   const [totalInvestmentAvailable, setTotalInvestmentAvailable] = useState(currentUser.TOTAL_AVAILABLE)
   const investInLoan = (loan, user, amount) => { 
     // add amount to loan.amount
-    // add amount to loan.avalaible
+    // substract amount to loan.avalaible
     // substract amount to totalInvestmentAvailable
     // update currentLoanData
     const loanId = loan.id;
@@ -42,7 +42,9 @@ export default function Home({loanData, currentUser, nonce}) {
     const pendingNewLoan = { ...loan };
     try {
       const amt = BigInt(amount)
-      const newTotalInvestmentAvailable = (BigInt(totalInvestmentAvailable) - amt).toString();
+      const newAmountAvailable = BigInt(pendingNewLoan.available.replace(",", "")) - amt
+      const newTotalInvestmentAvailable = (BigInt(totalInvestmentAvailable) - amt);
+      if (newAmountAvailable < 0n || newTotalInvestmentAvailable < 0n) return
       const tx =  {
         id: `${loanId}-${userId}-${nonce}`,
         amount: amount,
@@ -55,7 +57,7 @@ export default function Home({loanData, currentUser, nonce}) {
       //await fetch(/api/validation, {tx})...
       
       pendingNewLoan.amount = (BigInt(pendingNewLoan.amount.replace(",", "")) + amt).toString();
-      pendingNewLoan.available = (BigInt(pendingNewLoan.available.replace(",", "")) + amt).toString();
+      pendingNewLoan.available = newAmountAvailable.toString();
       pendingNewLoan.userInvested = true;
 
       const newLoanData = currentLoanData.map(item => {
@@ -63,7 +65,7 @@ export default function Home({loanData, currentUser, nonce}) {
       })
 
       setCurrentLoanData(newLoanData)
-      setTotalInvestmentAvailable(newTotalInvestmentAvailable)
+      setTotalInvestmentAvailable(newTotalInvestmentAvailable.toString())
       setSelectedLoan({})
     } catch(e) {
       //abort unclean transaction steps
