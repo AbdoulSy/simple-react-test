@@ -30,7 +30,7 @@ export default function InvestmentForm({selectedLoan,
                         Investment Amount: ({currentUser.CURRENT_CURRENCY.symbol})
                     </label>
                     <div className="flex flex-wrap flex-column">
-                        <Input name="investValue" id="investValue" type="number" onChange={setInvestedValue} />
+                        <Input name="investValue" id="investValue" type="number" onChange={setInvestedValue} className="h-16" />
                         <Button label="Invest" role="button"
                             disabled={amountPendingToBeInvested < 100}
                             onClick={() => investInLoan(selectedLoan, currentUser, amountPendingToBeInvested)}

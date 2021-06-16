@@ -3,9 +3,7 @@ export default function Modal({children, isOpen, setOpenState}) {
         {
             isOpen && <div className="mx-auto w-1/2 bg-gray-200 p-12">
                 <div role="contentinfo">
-                    <button onClick={() => setOpenState({})}>
-                    ❌ 
-                    </button>
+                    <button className="float-right" onClick={() => setOpenState({})}>❌</button>
                     {children}
                 </div>
             </div>

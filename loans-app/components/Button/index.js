@@ -7,7 +7,7 @@ export const Button = ({ label, onClick, disabled }) => {
       type="button"
       disabled={disabled}
       onClick={onClick}
-      className={['text-xl', disabled ? 'bg-gray-400' : 'bg-yellow-400', 'text-white', "w-32", "h-18"].join(' ')}
+      className={['text-xl', disabled ? 'bg-gray-400' : 'bg-yellow-400', 'text-white', "w-32", "h-16"].join(' ')}
     >
       {label}
     </button>
