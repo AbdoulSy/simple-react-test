@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
 export const Button = ({ label, onClick, disabled }) => {
   return (
@@ -7,7 +7,13 @@ export const Button = ({ label, onClick, disabled }) => {
       type="button"
       disabled={disabled}
       onClick={onClick}
-      className={['text-xl', disabled ? 'bg-gray-400' : 'bg-yellow-400', 'text-white', "w-32", "h-16"].join(' ')}
+      className={[
+        "text-xl",
+        disabled ? "bg-gray-400" : "bg-yellow-400",
+        "text-white",
+        "w-32",
+        "h-16",
+      ].join(" ")}
     >
       {label}
     </button>

@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
-import Modal from './';
+import Modal from "./";
 
 export default {
-  title: 'Common/Modal',
+  title: "Common/Modal",
   component: Modal,
   argTypes: {},
 };
@@ -16,7 +16,3 @@ Default.args = {
   isOpen: true,
   setOpenState: () => {},
 };
-
-
-
-

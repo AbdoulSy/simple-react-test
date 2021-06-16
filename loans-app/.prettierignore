@@ -1,0 +1,5 @@
+.next
+.storybook
+ADR
+node_modules
+coverage
